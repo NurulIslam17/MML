@@ -70,6 +70,8 @@
     <script src="{{asset('dashboard_assets')}}/js/lib/owl-carousel/owl.carousel-init.js"></script>
     <!-- scripit init-->
     <script src="{{asset('dashboard_assets')}}/js/dashboard2.js"></script>
+
+    @stack('js')
 </body>
 
 </html>
