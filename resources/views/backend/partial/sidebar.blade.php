@@ -2,24 +2,24 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="index.html">
-                        <!-- <img src="{{asset('dashboard_assets')}}/images/logo.png" alt="" /> --><span>Focus</span></a></div>
-                <li class="label">Main</li>
-                <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard<span
-                            class="sidebar-collapse-icon "></span></a>
-                </li>
+                <div class="logo"><a href="{{ route('dashboard') }}"><span>MMS</span></a></div>
+                
+
+                {{-- <li>
+                    <a href="{{ route('dashboard') }}" class="sidebar-sub-toggle">Dashboard</a>
+                </li> --}}
 
                 <li class="label">Apps</li>
 
-                {{-- <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Member <span
+                <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Bazar <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
-                        <li><a href="chart-flot.html">Flot</a></li>
+                        <li><a href="{{ route('bazar.index') }}">Bazar List</a></li>
+                        <li><a href="chart-flot.html">Person-wise</a></li>
                     </ul>
-                </li> --}}
+                </li>
 
-                <li><a href="app-profile.html"><i class="ti-users"></i> Member</a></li>
-                <li><a href="app-profile.html"><i class="ti-user"></i> Bazar</a></li>
+                <li><a href="app-profile.html"><i class="ti-user"></i> Member</a></li>
             </ul>
         </div>
     </div>
