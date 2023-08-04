@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('bazars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('price')->nullable();
             $table->string('bazar_date')->nullable();
             $table->timestamps();
         });

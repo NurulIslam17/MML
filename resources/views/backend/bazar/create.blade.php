@@ -55,7 +55,7 @@
                                         <div class="row my-0 py-0">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" name="item[]" required class="form-control" placeholder="Enter Item">
+                                                    <input type="text" name="items[]" required class="form-control" placeholder="Enter Item">
                                                 </div>
 
                                             </div>
