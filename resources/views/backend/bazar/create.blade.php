@@ -48,7 +48,7 @@
                                     <div class="form-group my-0 py-0">
                                         <label>Item Wise Price</label>
                                         <div class="">
-                                            <a id="cloneButton" onclick="add(this)" class="btn btn-success"><span class="text-light">+</span></a>
+                                            <a id="cloneButton" onclick="add(this)" class="btn btn-sm btn-success"><span class="text-light">+</span></a>
                                         </div>
                                     </div>
                                     <div id="originalDiv">
@@ -69,7 +69,7 @@
                                     </div>
 
                                     <div id="clonedDivContainer"></div>
-                                    <input type="submit" value="Ok">
+                                    <input type="submit" class="btn btn-success rounded-5" value="Save">
                                     {{-- <a href="{{ route('bazar.store')}}" type="submit" class="btn btn-sm btn-info">Save</a> --}}
                                 </form>
                             </div>

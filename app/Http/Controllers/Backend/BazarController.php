@@ -18,5 +18,6 @@ class BazarController extends Controller
     public function store(Request $request)
     {
         return $request;
+        
     }
 }
