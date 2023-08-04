@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>MMS</title>
+    <title>Login</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -32,11 +32,42 @@
 </head>
 
 <body>
-    @include('web.partial.header')
     <main id="main">
-        @yield('main')
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-md-4 mx-auto">
+
+                        <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data" class="php-email-form p-3 p-md-4">
+                            @csrf
+                            <div class="form-group">
+                                <label for="email"> Email</label>
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Enter Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"> Password</label>
+                                <input type="password" class="form-control" name="password" id="Password"
+                                    placeholder="Enate Password" required>
+                            </div>
+
+                            <div class="text-center">
+                                <input type="submit" value="Login" class="btn btn-sm btn-success">
+                                <p>Don't have an account? <a href="{{ route('register') }}">Create</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </main>
-    @include('web.partial.footer')
+
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <div id="preloader"></div>
+
     <!-- Vendor JS Files -->
     <script src="{{ asset('web_assets') }}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('web_assets') }}/assets/vendor/aos/aos.js"></script>
@@ -44,8 +75,10 @@
     <script src="{{ asset('web_assets') }}/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="{{ asset('web_assets') }}/assets/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('web_assets') }}/assets/vendor/php-email-form/validate.js"></script>
+
     <!-- Template Main JS File -->
     <script src="{{ asset('web_assets') }}/assets/js/main.js"></script>
+
 </body>
 
 </html>
