@@ -71,11 +71,9 @@
     <script src="{{ asset('dashboard_assets') }}/js/lib/owl-carousel/owl.carousel-init.js"></script>
     <!-- scripit init-->
     {{-- <script src="{{ asset('dashboard_assets') }}/js/dashboard2.js"></script> --}}
-
     {{-- iziToast --}}
     <script src="{{ asset('js/iziToast.js') }}"></script>
     <script src="{{ asset('js/jquery.simpleClone.min.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script> --}}
     @include('vendor.lara-izitoast.toast')
     @stack('js')
 </body>

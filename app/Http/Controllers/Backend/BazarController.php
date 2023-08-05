@@ -14,7 +14,9 @@ class BazarController extends Controller
 {
     public function index()
     {
-        return view('backend.bazar.index');
+        $bazars = Bazar::with(['user'])->get();
+        // return $bazars;
+        return view('backend.bazar.index',compact('bazars'));
     }
     public function create()
     {
@@ -42,11 +44,18 @@ class BazarController extends Controller
             }
             notify()->success("Inserted Successfully", "Success", "bottomRight");
             DB::commit();
-            return back();
+            return redirect()->route('bazar.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             notify()->error("Something Went Wrong", "Error", "bottomRight");
             DB::rollback();
         }
+    }
+
+    public function bazarDetails($id)
+    {
+        $bazar_details = BazarDetail::where('bazar_id',$id)->get();
+        $totla_price = BazarDetail::where('bazar_id',$id)->sum('item_price');
+        return view('backend.bazar.details',compact('bazar_details','totla_price'));
     }
 }
