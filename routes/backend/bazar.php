@@ -15,5 +15,5 @@ Route::middleware([
     Route::get('/bazar-details/{id}',[BazarController::class,'bazarDetails'])->name('bazar.details');
     Route::get('/bazar-approve/{id}',[BazarController::class,'approve'])->name('bazar.approve');
     Route::get('/bazar-person-wise',[BazarController::class,'personwiseCost'])->name('bazar.person_wise');
-    Route::get('/bazar-person-wise-details/{id}',[BazarController::class,'userwiseBazarDetails'])->name('bazar.userwise_detail');
+    Route::get('/bazar-person-wise-details/{id}',[BazarController::class,'personWiseBazarDetails'])->name('bazar.userwise_detail');
 });

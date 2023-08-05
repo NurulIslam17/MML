@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
-class BazarController extends Controller
+class  BazarController extends Controller
 {
     public function index()
     {
@@ -87,11 +87,10 @@ class BazarController extends Controller
     public function personwiseCost()
     {
         $user_wise_bazar = User::with('bazars')->get();
-        // return $user_wise_bazar;
         return view('backend.bazar.person_wise', compact('user_wise_bazar'));
     }
 
-    public function userwiseBazarDetails($id)
+    public function personWiseBazarDetails($id)
     {
         $user = User::findOrFail($id);
         $bazars = Bazar::where('user_id', $id)->get();
