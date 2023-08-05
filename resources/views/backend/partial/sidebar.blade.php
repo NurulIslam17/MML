@@ -11,11 +11,11 @@
 
                 <li class="label">Apps</li>
 
-                <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Bazar <span
+                <li><a class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> Cost <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
-                        <li><a href="{{ route('bazar.index') }}">Bazar List</a></li>
-                        <li><a href="chart-flot.html">Person-wise</a></li>
+                        <li><a href="{{ route('bazar.index') }}">Shopping List</a></li>
+                        <li><a href="{{ route('bazar.person_wise') }}">Person-wise</a></li>
                     </ul>
                 </li>
 

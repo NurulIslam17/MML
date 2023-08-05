@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function bazars()
+    {
+        return $this->hasmany(Bazar::class,'user_id','id');
+    }
 }

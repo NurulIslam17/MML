@@ -6,7 +6,7 @@
                 <div class="col-lg-8 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
-                            <h3><span>Cost List</span></h3>
+                            <h3><span>Person Wise Cost List</span></h3>
                         </div>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                             <ol class="breadcrumb">
                                 <a href="{{ route('bazar.create') }}">
                                     <button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i
-                                            class="ti-plus"></i>Create</button>
+                                            class="ti-list"></i>List</button>
                                 </a>
                             </ol>
                         </div>
@@ -36,49 +36,32 @@
                                         <thead>
                                             <tr class="text-center">
                                                 <th>SL</th>
-                                                <th>User</th>
-                                                <th>Price (BDT)</th>
-                                                <th>Status</th>
-                                                <th>Date</th>
+                                                <th>Member Name</th>
+                                                <th>No. Shop</th>
+                                                <th>Total Cost(BDT)</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($bazars as $key => $bazar)
+                                            @foreach ($user_wise_bazar as $key => $item)
                                                 <tr>
                                                     <td>#{{ $key + 1 }}</td>
                                                     <td>
-                                                        {{ $bazar->user->name }}
+                                                        {{ $item->name }}
                                                     </td>
                                                     <td>
-                                                        {{ $bazar->price }}
+                                                        {{ $item->bazars->count() }}
                                                     </td>
                                                     <td>
-                                                        @if ($bazar->status == 0)
-                                                            <span class="badge badge-sm  badge-warning"><i
-                                                                class="ti-close"></i></span>
-                                                        @else
-                                                            <span class="badge badge-sm badge-success"><i
-                                                                class="ti-check"></i></span>
-                                                        @endif
+                                                        {{ $item->bazars->sum('price') }}
                                                     </td>
                                                     <td>
-
-                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
-                                                    </td>
-                                                    <td>
-
-                                                        @if (auth()->user()->type == 1)
-                                                            <a href="{{ route('bazar.approve', $bazar->id) }}">
-                                                                <button type="button"
-                                                                    class="btn btn-{{  $bazar->status == 1 ? "default" : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
-                                                            </a>
-                                                        @endif
-                                                        <a href="{{ route('bazar.details', $bazar->id) }}">
+                                                        <a href="{{ route('bazar.userwise_detail',$item->id) }}">
                                                             <button type="button"
                                                                 class="btn btn-info btn-flat py-0">Details</button>
                                                         </a>
                                                     </td>
+
                                                 </tr>
                                             @endforeach
                                         </tbody>

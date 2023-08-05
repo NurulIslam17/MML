@@ -29,11 +29,11 @@
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="stat-widget-one">
-                            <div class="stat-icon dib"><i class="ti-money color-success border-success"></i>
+                            <div class="stat-icon dib"><i class="ti-stats-up color-success border-success"></i>
                             </div>
                             <div class="stat-content dib">
                                 <div class="stat-text">Total Cost</div>
-                                <div class="stat-digit">1,012</div>
+                                <div class="stat-digit">{{ $total_cost > 0 ? $total_cost : 0  }}</div>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="stat-content dib">
                                 <div class="stat-text">Total Member</div>
-                                <div class="stat-digit">4</div>
+                                <div class="stat-digit">{{ $total_users > 0 ? $total_users : 0 }}</div>
                             </div>
                         </div>
                     </div>
