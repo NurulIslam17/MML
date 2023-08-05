@@ -25,27 +25,27 @@ class BazarController extends Controller
         $items = $request->items;
         $item_price = $request->item_price;
         try {
+            // dd($request->all());
             DB::beginTransaction();
 
-            $bazar_id = Bazar::create([
+            $bazar_id = DB::table('bazars')->insertGetId([
                 'user_id' => auth()->user()->id,
-                'price' => $request->price,
+                'price' => (int) $request->price,
                 'bazar_date' => $request->date
             ]);
             foreach ($items as $key => $item) {
-                dd($item_price[$key]);
                 BazarDetail::create([
-                    "bazar_id" => $$bazar_id->id,
+                    "bazar_id" => $bazar_id,
                     "item" => $item,
                     "item_price" => $item_price[$key],
                 ]);
             }
-            notify()->success("Inserted Successfully", "Success", "topRight");
+            notify()->success("Inserted Successfully", "Success", "bottomRight");
             DB::commit();
             return back();
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            notify()->error("Error notification test", "Error", "topRight");
+            notify()->error("Something Went Wrong", "Error", "bottomRight");
             DB::rollback();
         }
     }
