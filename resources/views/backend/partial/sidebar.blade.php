@@ -2,12 +2,7 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="{{ route('dashboard') }}"><span>MMS</span></a></div>
-                
-
-                {{-- <li>
-                    <a href="{{ route('dashboard') }}" class="sidebar-sub-toggle">Dashboard</a>
-                </li> --}}
+                <div class="logo"><a href="{{ route('dashboard') }}"><span>MMS</span></a></div
 
                 <li class="sidebar-sub-toggle">
                     <a href="{{ route('dashboard') }}">
