@@ -15,8 +15,7 @@ class BazarController extends Controller
     public function index()
     {
         $bazars = Bazar::with(['user'])->get();
-        // return $bazars;
-        return view('backend.bazar.index',compact('bazars'));
+        return view('backend.bazar.index', compact('bazars'));
     }
     public function create()
     {
@@ -27,9 +26,7 @@ class BazarController extends Controller
         $items = $request->items;
         $item_price = $request->item_price;
         try {
-            // dd($request->all());
             DB::beginTransaction();
-
             $bazar_id = DB::table('bazars')->insertGetId([
                 'user_id' => auth()->user()->id,
                 'price' => (int) $request->price,
@@ -54,8 +51,26 @@ class BazarController extends Controller
 
     public function bazarDetails($id)
     {
-        $bazar_details = BazarDetail::where('bazar_id',$id)->get();
-        $totla_price = BazarDetail::where('bazar_id',$id)->sum('item_price');
-        return view('backend.bazar.details',compact('bazar_details','totla_price'));
+        $bazar_details = BazarDetail::where('bazar_id', $id)->get();
+        $totla_price = $bazar_details->sum('item_price');
+        return view('backend.bazar.details', compact('bazar_details', 'totla_price'));
+    }
+
+    public function approve($id)
+    {
+        $bazar = Bazar::findOrFail($id);
+        if ($bazar->status == 0) {
+            $data = [
+                'status' => 1,
+            ];
+        } else {
+            $data = [
+                'status' => 0,
+            ];
+        }
+
+        $bazar->update($data);
+        notify()->success("Updated Successfully", "Success", "bottomRight");
+        return redirect()->route('bazar.index');
     }
 }
