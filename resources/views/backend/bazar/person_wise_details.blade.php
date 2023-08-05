@@ -6,7 +6,7 @@
                 <div class="col-lg-8 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
-                            <h3><span>Cost List</span></h3>
+                            <h1><span>Details</span></h1>
                         </div>
                     </div>
                 </div>
@@ -15,9 +15,8 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb">
-                                <a href="{{ route('bazar.create') }}">
-                                    <button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i
-                                            class="ti-plus"></i>Create</button>
+                                <a href="{{ route('bazar.person_wise') }}">
+                                    <button type="button" class="btn btn-primary">Back</button>
                                 </a>
                             </ol>
                         </div>
@@ -28,28 +27,24 @@
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
-                    <div class="col-lg-10 mx-auto">
+                    <div class="col-md-7 mx-auto">
                         <div class="card">
                             <div class="card-body">
+                                <h4>{{ $user->name }}'s Sopping List</h3>
                                 <div class="table-responsive">
                                     <table class="table m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>SL</th>
-                                                <th>User</th>
                                                 <th>Price (BDT)</th>
                                                 <th>Status</th>
                                                 <th>Date</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($bazars as $key => $bazar)
                                                 <tr>
                                                     <td>#{{ $key + 1 }}</td>
-                                                    <td>
-                                                        {{ $bazar->user->name }}
-                                                    </td>
                                                     <td>
                                                         {{ $bazar->price }}
                                                     </td>
@@ -66,23 +61,11 @@
 
                                                         {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
                                                     </td>
-                                                    <td>
-
-                                                        @if (auth()->user()->type == 1)
-                                                            <a href="{{ route('bazar.approve', $bazar->id) }}">
-                                                                <button type="button"
-                                                                    class="btn btn-{{  $bazar->status == 1 ? "default" : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
-                                                            </a>
-                                                        @endif
-                                                        <a href="{{ route('bazar.details', $bazar->id) }}">
-                                                            <button type="button"
-                                                                class="btn btn-info btn-flat py-0">Details</button>
-                                                        </a>
-                                                    </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <p class="d-flex justify-content-end text-danger">Total : {{$bazars->sum('price')}} Taka</p>
                                 </div>
                             </div>
                         </div>

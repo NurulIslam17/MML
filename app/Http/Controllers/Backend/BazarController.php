@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Throwable;
+use App\Models\User;
 use App\Models\Bazar;
 use App\Models\BazarDetail;
 use Illuminate\Http\Request;
@@ -25,7 +26,17 @@ class BazarController extends Controller
     {
         $items = $request->items;
         $item_price = $request->item_price;
+
+        $sum = 0;
+        for ($i = 0; $i < count($item_price); $i++) {
+            $sum += $item_price[$i];
+        }
+
         try {
+            if ($sum  != $request->price) {
+                notify()->error("Check Items Price Sum", "Error", "bottomRight");
+                return back();
+            }
             DB::beginTransaction();
             $bazar_id = DB::table('bazars')->insertGetId([
                 'user_id' => auth()->user()->id,
@@ -68,9 +79,22 @@ class BazarController extends Controller
                 'status' => 0,
             ];
         }
-
         $bazar->update($data);
         notify()->success("Updated Successfully", "Success", "bottomRight");
         return redirect()->route('bazar.index');
+    }
+
+    public function personwiseCost()
+    {
+        $user_wise_bazar = User::with('bazars')->get();
+        // return $user_wise_bazar;
+        return view('backend.bazar.person_wise', compact('user_wise_bazar'));
+    }
+
+    public function userwiseBazarDetails($id)
+    {
+        $user = User::findOrFail($id);
+        $bazars = Bazar::where('user_id', $id)->get();
+        return view('backend.bazar.person_wise_details', compact('bazars', 'user'));
     }
 }
