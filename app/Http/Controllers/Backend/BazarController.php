@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
-class BazarController extends Controller
+class  BazarController extends Controller
 {
     public function index()
     {
