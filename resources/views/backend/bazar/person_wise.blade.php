@@ -10,20 +10,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- /# column -->
-                <div class="col-lg-4 p-l-0 title-margin-left">
-                    <div class="page-header">
-                        <div class="page-title">
-                            <ol class="breadcrumb">
-                                <a href="{{ route('bazar.create') }}">
-                                    <button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i
-                                            class="ti-list"></i>List</button>
-                                </a>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                <!-- /# column -->
             </div>
             <!-- /# row -->
             <section id="main-content">
