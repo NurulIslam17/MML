@@ -28,7 +28,7 @@
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-10 mx-auto">
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -54,18 +54,29 @@
                                                         {{ $bazar->price }}
                                                     </td>
                                                     <td>
-                                                        <span class="badge badge-primary">Paid</span>
+                                                        @if ($bazar->status == 0)
+                                                            <span class="badge badge-sm  badge-warning"><i
+                                                                class="ti-close"></i></span>
+                                                        @else
+                                                            <span class="badge badge-sm badge-success"><i
+                                                                class="ti-check"></i></span>
+                                                        @endif
                                                     </td>
                                                     <td>
-                    
-                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y')}}
+
+                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
                                                     </td>
                                                     <td>
-                                                        <a href="#">
-                                                            <button type="button" class="btn btn-dark btn-flat">Approve</button>
-                                                        </a>
-                                                        <a href="{{ route('bazar-details',$bazar->id) }}">
-                                                            <button type="button" class="btn btn-info btn-flat">Details</button>
+
+                                                        @if (auth()->user()->type == 1)
+                                                            <a href="{{ route('bazar.approve', $bazar->id) }}">
+                                                                <button type="button"
+                                                                    class="btn btn-{{  $bazar->status == 1 ? "default" : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('bazar.details', $bazar->id) }}">
+                                                            <button type="button"
+                                                                class="btn btn-info btn-flat py-0">Details</button>
                                                         </a>
                                                     </td>
                                                 </tr>

@@ -54,7 +54,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    <p>Total : {{$totla_price}} Taka</p>
+                                    <p class="d-flex justify-content-end text-danger">Total : {{$totla_price}} Taka</p>
                                 </div>
                             </div>
                         </div>

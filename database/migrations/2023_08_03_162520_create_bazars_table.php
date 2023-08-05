@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('price')->nullable();
             $table->string('bazar_date')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
