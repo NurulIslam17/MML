@@ -22,7 +22,7 @@
                 <li><a class="sidebar-sub-toggle"><i class="ti-palette"></i> Meal <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
-                        <li><a href="#">Meal List</a></li>
+                        <li><a href="{{ route('meal.index') }}">Meal List</a></li>
                     </ul>
                 </li>
 
