@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasmany(Bazar::class,'user_id','id');
     }
+
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
 }
