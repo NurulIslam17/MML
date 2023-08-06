@@ -36,50 +36,46 @@
                                         <thead>
                                             <tr class="text-center">
                                                 <th>SL</th>
-                                                <th>User</th>
-                                                <th>Meal</th>
+                                                <th>Meal for</th>
+                                                <th>Meal No.</th>
+                                                <th>Created By</th>
                                                 <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($bazars as $key => $bazar)
+                                            @foreach ($meals as $key => $meal)
                                                 <tr>
                                                     <td>#{{ $key + 1 }}</td>
                                                     <td>
-                                                        {{ $bazar->user->name }}
+                                                        {{ $meal->user->name }}
                                                     </td>
                                                     <td>
-                                                        {{ $bazar->price }}
+                                                        {{ $meal->meal_no }}
                                                     </td>
                                                     <td>
-                                                        @if ($bazar->status == 0)
-                                                            <span class="badge badge-sm  badge-warning"><i
-                                                                class="ti-close"></i></span>
-                                                        @else
-                                                            <span class="badge badge-sm badge-success"><i
-                                                                class="ti-check"></i></span>
-                                                        @endif
+                                                        {{ $meal->mealCreatedBy->name }}
                                                     </td>
-                                                    <td>
 
-                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
+                                                    <td>
+                                                        {{ \Carbon\Carbon::parse($meal->meal_on)->format('d M , Y') }}
                                                     </td>
                                                     <td>
 
                                                         @if (auth()->user()->type == 1)
-                                                            <a href="{{ route('bazar.approve', $bazar->id) }}">
+                                                            <a href="#">
                                                                 <button type="button"
-                                                                    class="btn btn-{{  $bazar->status == 1 ? "default" : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
+                                                                    class="btn btn-success btn-flat py-0">Edit</button>
                                                             </a>
                                                         @endif
-                                                        <a href="{{ route('bazar.details', $bazar->id) }}">
+
+                                                        <a href="#">
                                                             <button type="button"
                                                                 class="btn btn-info btn-flat py-0">Details</button>
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            @endforeach --}}
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

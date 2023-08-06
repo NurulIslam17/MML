@@ -43,19 +43,25 @@
                                                 <div class="form-group">
                                                     <label>Member</label>
                                                     <select class="form-control" name="user_id">
+                                                        @if (auth()->user()->type == 1)
                                                         <option selected disabled>----- Select Member----</option>
-                                                        <option>Mizan</option>
-                                                        <option>Afik</option>
-                                                        <option>Sharif</option>
-                                                        <option>Nurul</option>
+                                                            @foreach ($users as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        @else
+                                                            <option selected value="{{ auth()->user()->id }}">
+                                                                {{ auth()->user()->name }}
+                                                            </option>
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>No. of Meals</label>
-                                                    <input type="number" name="meal_no" class="form-control"
-                                                        placeholder="Enter Meal Number">
+                                                    <input type="number" name="meal_no" value="{{ old('meal_no') }}"
+                                                        class="form-control" placeholder="Enter Meal Number">
                                                 </div>
                                             </div>
                                         </div>
@@ -73,31 +79,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer">
-                            <p>3032 © Admin Board. - <a href="#">example.com</a></p>
-                        </div>
-                    </div>
-                </div>
             </section>
         </div>
     </div>
 @endsection
 
 @push('js')
-    <script>
-        document.addEventListener('DOMContentLoaded', function(e) {
-            e.preventDefault();
-            const originalDiv = document.getElementById('originalDiv');
-            const cloneButton = document.getElementById('cloneButton');
-            const clonedDivContainer = document.getElementById('clonedDivContainer');
-
-            cloneButton.onclick = function() {
-                const clonedDiv = originalDiv.cloneNode(true); // Clone the original div along with its content
-                clonedDivContainer.appendChild(clonedDiv);
-            };
-        });
-    </script>
 @endpush
