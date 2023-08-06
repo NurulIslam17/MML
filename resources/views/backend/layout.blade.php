@@ -32,6 +32,8 @@
     <link href="{{ asset('dashboard_assets') }}/css/lib/helper.css" rel="stylesheet">
     <link href="{{ asset('dashboard_assets') }}/css/style.css" rel="stylesheet">
     <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body>
@@ -46,6 +48,10 @@
     <!-- jquery vendor -->
     <script src="{{ asset('dashboard_assets') }}/js/lib/jquery.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/lib/jquery.nanoscroller.min.js"></script>
+
+    {{-- tostr --}}
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <!-- nano scroller -->
     <script src="{{ asset('dashboard_assets') }}/js/lib/menubar/sidebar.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/lib/preloader/pace.min.js"></script>
@@ -74,7 +80,8 @@
     {{-- iziToast --}}
     <script src="{{ asset('js/iziToast.js') }}"></script>
     <script src="{{ asset('js/jquery.simpleClone.min.js') }}"></script>
-    @include('vendor.lara-izitoast.toast')
+    {{-- @include('vendor.lara-izitoast.toast') --}}
+    {!! Toastr::message() !!}
     @stack('js')
 </body>
 
