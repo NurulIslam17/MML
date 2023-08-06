@@ -2,7 +2,9 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="{{ route('dashboard') }}"><span>MMS</span></a></div>
+                <div class="logo"><a href="{{ route('dashboard') }}"><span>
+                    
+                <img src="{{ asset('dashboard_assets') }}/images/mms-logo3.PNG" alt="" class="rounded-circle" style="height:60px" srcset=""></span></a></div>
 
                 <li class="sidebar-sub-toggle">
                     <a href="{{ route('dashboard') }}">
@@ -15,6 +17,12 @@
                     <ul>
                         <li><a href="{{ route('bazar.index') }}">Shopping List</a></li>
                         <li><a href="{{ route('bazar.person_wise') }}">Person-wise</a></li>
+                    </ul>
+                </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-palette"></i> Meal <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="#">Meal List</a></li>
                     </ul>
                 </li>
 

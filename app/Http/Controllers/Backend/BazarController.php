@@ -35,7 +35,7 @@ class  BazarController extends Controller
 
         try {
             if ($sum  != $request->price) {
-                Toastr::error('Check Items Price Sum', 'Inserted Faied', ["positionClass" => "toast-top-right"]);
+                Toastr::error('Check Items Price Sum', 'Inserted Faied');
                 return back();
             }
             DB::beginTransaction();
@@ -51,12 +51,12 @@ class  BazarController extends Controller
                     "item_price" => $item_price[$key],
                 ]);
             }
-            Toastr::success('Data Inserted Successfully', '', ["positionClass" => "toast-top-right"]);
+            Toastr::success('Data Inserted Successfully');
             DB::commit();
             return redirect()->route('bazar.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Faied', '', ["positionClass" => "toast-top-right"]);
+            Toastr::error('Data Inserted Faied');
             DB::rollback();
         }
     }
@@ -81,7 +81,8 @@ class  BazarController extends Controller
             ];
         }
         $bazar->update($data);
-        Toastr::success('Approve Status Updated Successfully', '', ["positionClass" => "toast-top-right"]);
+        // toastr["success"]("tyt", "gjhy");
+        Toastr::success('Approve Status Updated Successfully');
         return redirect()->route('bazar.index');
     }
 
