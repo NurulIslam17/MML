@@ -16,7 +16,8 @@
                         <div class="page-title">
                             <ol class="breadcrumb">
                                 <a href="{{ route('bazar.index') }}">
-                                    <button type="button" class="btn btn-primary">Back</button>
+                                    <button type="button" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5"><i
+                                        class="ti-back-left"></i>Back</button>
                                 </a>
                             </ol>
                         </div>
