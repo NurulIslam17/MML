@@ -17,4 +17,9 @@ class DepositeController extends Controller
         $users = User::latest()->get();
         return view('backend.deposite.create',compact('users'));
     }
+    public function store()
+    {
+        $users = User::latest()->get();
+        return view('backend.deposite.create',compact('users'));
+    }
 }

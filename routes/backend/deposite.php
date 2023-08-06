@@ -11,4 +11,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('/deposites', [DepositeController::class, 'index'])->name('deposite.index');
     Route::get('/deposite-create', [DepositeController::class, 'create'])->name('deposite.create');
+    Route::post('/deposite-create', [DepositeController::class, 'store'])->name('deposite.store');
 });
