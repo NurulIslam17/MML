@@ -49,9 +49,6 @@
     <script src="{{ asset('dashboard_assets') }}/js/lib/jquery.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/lib/jquery.nanoscroller.min.js"></script>
 
-    {{-- tostr --}}
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <!-- nano scroller -->
     <script src="{{ asset('dashboard_assets') }}/js/lib/menubar/sidebar.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/lib/preloader/pace.min.js"></script>
@@ -76,11 +73,30 @@
     <script src="{{ asset('dashboard_assets') }}/js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/lib/owl-carousel/owl.carousel-init.js"></script>
     <!-- scripit init-->
-    {{-- <script src="{{ asset('dashboard_assets') }}/js/dashboard2.js"></script> --}}
-    {{-- iziToast --}}
-    <script src="{{ asset('js/iziToast.js') }}"></script>
-    <script src="{{ asset('js/jquery.simpleClone.min.js') }}"></script>
-    {{-- @include('vendor.lara-izitoast.toast') --}}
+
+    {{-- tostr --}}
+    {{-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> --}}
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "preventDuplicates": true,
+            "debug": false,
+            "newestOnTop": false,
+            "positionClass": "toast-top-right",
+            "onclick": null,
+            "showDuration": "200",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    </script>
     {!! Toastr::message() !!}
     @stack('js')
 </body>
