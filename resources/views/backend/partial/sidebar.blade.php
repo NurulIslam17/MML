@@ -31,6 +31,12 @@
                         <li><a href="{{ route('deposite.index') }}">Deposite List</a></li>
                     </ul>
                 </li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-receipt"></i> Report <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="{{ route('report.index') }}">Report List</a></li>
+                    </ul>
+                </li>
 
                 <li><a href="app-profile.html"><i class="ti-user"></i> Member</a></li>
             </ul>
