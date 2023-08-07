@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\DepositeController;
 use App\Http\Controllers\Backend\ReportController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,5 +10,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])->name('report.index');
+    Route::get('/reports-status/{id}', [ReportController::class, 'status'])->name('report.paid_status');
 
 });
