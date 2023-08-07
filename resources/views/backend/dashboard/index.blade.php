@@ -26,7 +26,7 @@
         <!-- /# row -->
         <section id="main-content">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-stats-up color-success border-success"></i>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-user color-primary border-primary"></i>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="stat-widget-one">
                             {{-- <i class="ti-palette"></i> --}}
@@ -63,39 +63,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-link color-info border-info"></i></div>
                             <div class="stat-content dib">
-                                <div class="stat-text">Cash(BDT)</div>
-                                <div class="stat-digit">81</div>
+                                <div class="stat-text">Deposite(BDT)</div>
+                                <div class="stat-digit">{{ $deposite }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
+                <div class="col-lg-4">
+                    <div class="card {{ $deposite - $total_cost < 0 ? 'bg-danger' : '' }}">
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-cut color-warning border-warning"></i>
                             </div>
                             <div class="stat-content dib">
-                                <div class="stat-text">Remaining</div>
-                                <div class="stat-digit">{{ $total_cost > 0 ? $total_cost : 0  }}</div>
+                                <div class="stat-text">Remaining(BDT)</div>
+                                <div class="stat-digit">{{ $deposite - $total_cost }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card">
                         <div class="stat-widget-one">
                             <div class="stat-icon dib"><i class="ti-user color-success border-success"></i>
                             </div>
                             <div class="stat-content dib">
                                 <div class="stat-text">Meal Rate</div>
-                                <div class="stat-digit">{{ round($total_cost / $totla_meals,2) }}</div>
+                                <div class="stat-digit">{{$meal_rate}}</div>
                             </div>
                         </div>
                     </div>

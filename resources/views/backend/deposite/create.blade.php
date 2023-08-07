@@ -35,7 +35,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form method="POST" action="{{ route('meal.store') }}">
+                                    <form method="POST" action="{{ route('deposite.store') }}">
                                         @csrf
 
                                         <div class="row">
@@ -61,7 +61,7 @@
                                                 <div class="form-group">
                                                     <label>Amount</label>
                                                     <input type="number" name="amount" value="{{ old('amount') }}"
-                                                        class="form-control" placeholder="Enter Meal Number">
+                                                        class="form-control" placeholder="Enter Amount">
                                                 </div>
                                             </div>
                                         </div>

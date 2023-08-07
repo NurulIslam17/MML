@@ -7,8 +7,8 @@
                 <div>
                     <h4>Address</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022 - US<br>
+                        West Sewrapara Street <br>
+                        Dhaka, Bangladesh<br>
                     </p>
                 </div>
 
@@ -17,21 +17,10 @@
             <div class="col-lg-3 col-md-6 footer-links d-flex">
                 <i class="bi bi-telephone icon"></i>
                 <div>
-                    <h4>Reservations</h4>
+                    <h4>Contact</h4>
                     <p>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 footer-links d-flex">
-                <i class="bi bi-clock icon"></i>
-                <div>
-                    <h4>Opening Hours</h4>
-                    <p>
-                        <strong>Mon-Sat: 11AM</strong> - 23PM<br>
-                        Sunday: Closed
+                        <strong>Phone:</strong> +088 12323232323<br>
+                        <strong>Email:</strong> help@gmail.com<br>
                     </p>
                 </div>
             </div>
@@ -46,19 +35,30 @@
                 </div>
             </div>
 
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>About</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectme temporibus aspernatur autem iure?
+                    </p>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>Yummy</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>MMS</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="https://bootstrapmade.com/">Nurul</a>
         </div>
     </div>
 

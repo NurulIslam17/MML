@@ -46,21 +46,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{-- @foreach ($meals as $key => $meal)
+                                            @foreach ($deposites as $key => $item)
                                                 <tr>
                                                     <td>#{{ $key + 1 }}</td>
                                                     <td>
-                                                        {{ $meal->user->name }}
+                                                        {{ $item->user->name }}
                                                     </td>
                                                     <td>
-                                                        {{ $meal->meal_no }}
+                                                        {{ $item->amount }}
                                                     </td>
                                                     <td>
-                                                        {{ $meal->mealCreatedBy->name }}
-                                                    </td>
-
-                                                    <td>
-                                                        {{ \Carbon\Carbon::parse($meal->meal_on)->format('d M , Y') }}
+                                                        {{ \Carbon\Carbon::parse($item->deposite_on)->format('d M , Y') }}
                                                     </td>
                                                     <td>
 
@@ -77,7 +73,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            @endforeach --}}
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
