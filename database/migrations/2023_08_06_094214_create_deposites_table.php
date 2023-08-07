@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('deposites', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('amount')->nullable();
+            $table->boolean('status')->default(0);
+            $table->string('deposite_on')->nullable();
             $table->timestamps();
         });
     }

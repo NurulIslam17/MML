@@ -61,7 +61,7 @@
                                                 <div class="form-group">
                                                     <label>Amount</label>
                                                     <input type="number" name="amount" value="{{ old('amount') }}"
-                                                        class="form-control" placeholder="Enter Meal Number">
+                                                        class="form-control" placeholder="Enter Amount">
                                                 </div>
                                             </div>
                                         </div>

@@ -25,7 +25,6 @@ class MealController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request;
         try {
             Meal::create([
                 'user_id' => $request->user_id,
@@ -37,8 +36,8 @@ class MealController extends Controller
             return redirect()->route('meal.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Faied');
+            Toastr::error('Data Inserted Failed');
+            return back();
         }
-        return view('backend.meal.create');
     }
 }

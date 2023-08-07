@@ -56,7 +56,7 @@ class  BazarController extends Controller
             return redirect()->route('bazar.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Faied');
+            Toastr::error('Data Inserted Failed');
             DB::rollback();
         }
     }
