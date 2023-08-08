@@ -19,7 +19,7 @@ class ProfileController extends Controller
 
     public function uploadFile($file)
     {
-        $imageName = 'PROFILE_'.time() . '.' . $file->extension();
+        $imageName = 'PROFILE_' . time() . '.' . $file->extension();
         $file->move(public_path('upload/images'), $imageName);
         return $imageName;
     }
@@ -27,24 +27,18 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         try {
-
             $file = $request->file('profile_photo_path');
             $user = User::findOrFail($request->profile_id);
             $data = [
                 'name'  => $request->name,
                 'email'  => $request->email,
-                'profile_photo_path' => $this->uploadFile($file)
             ];
-
-            // dd($data);
-            // if (isset($file)) {
-            //     $user->update(
-            //         ['profile_photo_path' => $this->uploadFile($file)]
-            //     );
-            // }
+            if (isset($file)) {
+                $data['profile_image'] = $this->uploadFile($file);
+            }
             $user->update($data);
             Toastr::success('Profile Updated Successfully');
-            return redirect()->route('report.index');
+            return redirect()->route('dashboard');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             Toastr::error('Profile Updated Failed');

@@ -19,8 +19,8 @@
                                         <div class="row">
                                             <div class="col-md-4">
 
-                                                @if (isset($user->profile_photo_path))
-                                                    <img src="{{ asset('upload/images/' . $user->profile_photo_path) }}"
+                                                @if (isset($user->profile_image))
+                                                    <img src="{{ asset('upload/images/' . $user->profile_image) }}"
                                                         alt="" srcset="" style="height: 120px;width:120px;">
                                                 @else
                                                     <img src="{{ asset('dashboard_assets/images/mms-logo.PNG') }}"
