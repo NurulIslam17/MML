@@ -84,22 +84,30 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <a onclick="event.preventDefault();document.getElementById('profile').submit();" href="{{ route('profile.edit',1)}}">
                                                 <i class="ti-user"></i>
                                                 <span>Profile</span>
                                             </a>
+                                            <form action="{{ route('profile.edit') }}" id="profile" method="post">
+                                                @csrf
+                                                <input type="hidden" name="profile_id" value="{{ auth()->user()->id }}">
+                                            </form>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item text-danger"
-                                            onclick="event.preventDefault();document.getElementById('logout').submit();"><i
-                                                class="bx
-                                            bx-power-off font-size-16 align-middle mr-1 text-danger"></i>
-                                            Logout</a>
-                    
-                                        <form action="{{ route('logout') }}" id="logout" method="post">
-                                            @csrf</form>
-                                        
+                                            <a href="#">
+                                                <i class="ti-lock"></i>
+                                                <span>Change Password</span>
+                                            </a>
                                         </li>
+                                        <li class="text-danger">
+                                            <a onclick="event.preventDefault();document.getElementById('logout').submit();">
+                                                <i class="ti-power-off"></i>
+                                                <span >Logout</span>
+                                            </a>
+                                            <form action="{{ route('logout') }}" id="logout" method="post">
+                                                @csrf</form>
+                                        </li>
+                        
                                     </ul>
                                 </div>
                             </div>
