@@ -31,9 +31,36 @@
             </ul>
         </nav><!-- .navbar -->
 
+        @if (Route::has('login'))
+            @auth
+                @if (auth()->user()->profile_image)
+                    <a href="{{ route('dashboard') }}">
+                        <img src="{{ asset('upload/images/' . auth()->user()->profile_image) }}"
+                            style="width: 40px;height:40px;" class="rounded-circle" alt="" srcset="">
+                    </a>
+                @else
+                    <a href="{{ route('dashboard') }}">
+                        {{ auth()->user()->name }}
+                    </a>
+                @endif
+            @else
+                <a class="btn-book-a-table" href="{{ route('login') }}">Login</a>
+                <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+                <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+            @endauth
+        @endif
+
+        {{-- @if (auth()->user()->profile_image)
+        <a href="{{ route('dashboard') }}">
+            <img src="{{ asset('upload/images/' . auth()->user()->profile_image) }}"
+                style="width: 40px;height:40px;" class="rounded-circle" alt="" srcset="">
+        </a>
+    @else
         <a class="btn-book-a-table" href="{{ route('login') }}">Login</a>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    @endif --}}
+
 
     </div>
 </header>
