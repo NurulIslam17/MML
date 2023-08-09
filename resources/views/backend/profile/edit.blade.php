@@ -18,23 +18,22 @@
                                         <input type="hidden" name="profile_id" value="{{ $user->id }}">
                                         <div class="row">
                                             <div class="col-md-4">
-
                                                 @if (isset($user->profile_image))
                                                     <img src="{{ asset('upload/images/' . $user->profile_image) }}"
-                                                        alt="" srcset="" style="height: 120px;width:120px;">
+                                                        style="height: 120px;width:120px;">
                                                 @else
                                                     <img src="{{ asset('dashboard_assets/images/mms-logo.PNG') }}"
-                                                        alt="" srcset="" style="height: 120px;width:120px;">
+                                                        srcset="" style="height: 120px;width:120px;">
                                                 @endif
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
                                                     <input type="text" name="name" value="{{ $user->name }}"
                                                         class="form-control mb-2">
-                                               
+
                                                     <input type="email" name="email" value="{{ $user->email }}"
                                                         class="form-control mb-2">
-                                               
+
                                                 </div>
                                             </div>
                                         </div>

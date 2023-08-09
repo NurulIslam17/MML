@@ -1,8 +1,7 @@
-
 <div class="header">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
+        <div class="row py-0 my-0">
+            <div class="col-lg-12 py-0 mt-1">
                 <div class="float-left">
                     <div class="hamburger sidebar-toggle">
                         <span class="line"></span>
@@ -23,7 +22,8 @@
                                         <li>
                                             <a href="#">
                                                 <img class="pull-left m-r-10 avatar-img"
-                                                    src="{{asset('dashboard_assets')}}/images/avatar/3.jpg" alt="" />
+                                                    src="{{ asset('dashboard_assets') }}/images/avatar/3.jpg"
+                                                    alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34
                                                         PM</small>
@@ -56,7 +56,8 @@
                                         <li class="notification-unread">
                                             <a href="#">
                                                 <img class="pull-left m-r-10 avatar-img"
-                                                    src="{{asset('dashboard_assets')}}/images/avatar/1.jpg" alt="" />
+                                                    src="{{ asset('dashboard_assets') }}/images/avatar/1.jpg"
+                                                    alt="" />
                                                 <div class="notification-content">
                                                     <small class="notification-timestamp pull-right">02:34
                                                         PM</small>
@@ -76,21 +77,34 @@
                     </div>
                     <div class="dropdown dib">
                         <div class="header-icon" data-toggle="dropdown">
-                            <span class="user-avatar">{{ auth()->user()->name }}
-                                <i class="ti-angle-down f-s-10"></i>
-                            </span>
+                            <div class="media">
+                                <div class="media-left">
+
+                                    @if (isset(auth()->user()->profile_image))
+                                        <a href="#"><img class="media-object rounded-circle"
+                                                style="width:40px;height:40px;"
+                                                src="{{ asset('upload/images/' . auth()->user()->profile_image) }}"
+                                                alt="..."></a>
+                                    @else
+                                        <img src="{{ asset('dashboard_assets/images/mms-logo.PNG') }}" class="rounded-circle" style="width:40px;height:40px;"
+                                            srcset="" style="height: 120px;width:120px;">
+                                    @endif
+                                </div>
+                            </div>
                             <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
-                       
+
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a onclick="event.preventDefault();document.getElementById('profile').submit();" href="{{ route('profile.edit',1)}}">
+                                            <a onclick="event.preventDefault();document.getElementById('profile').submit();"
+                                                href="{{ route('profile.edit', 1) }}">
                                                 <i class="ti-user"></i>
                                                 <span>Profile</span>
                                             </a>
                                             <form action="{{ route('profile.edit') }}" id="profile" method="post">
                                                 @csrf
-                                                <input type="hidden" name="profile_id" value="{{ auth()->user()->id }}">
+                                                <input type="hidden" name="profile_id"
+                                                    value="{{ auth()->user()->id }}">
                                             </form>
                                         </li>
                                         <li>
@@ -100,14 +114,15 @@
                                             </a>
                                         </li>
                                         <li class="text-danger">
-                                            <a onclick="event.preventDefault();document.getElementById('logout').submit();">
+                                            <a
+                                                onclick="event.preventDefault();document.getElementById('logout').submit();">
                                                 <i class="ti-power-off"></i>
-                                                <span >Logout</span>
+                                                <span>Logout</span>
                                             </a>
                                             <form action="{{ route('logout') }}" id="logout" method="post">
                                                 @csrf</form>
                                         </li>
-                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -118,4 +133,3 @@
         </div>
     </div>
 </div>
-
