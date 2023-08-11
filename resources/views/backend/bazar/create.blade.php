@@ -31,51 +31,67 @@
 
                 <!-- /# row -->
                 <div class="row">
-                    <div class="col-lg-6 mx-auto">
+                    <div class="col-lg-8 mx-auto">
                         <div class="card">
                             <div class="card-body">
                                 <div class="basic-form">
                                     <form method="POST" action="{{ route('bazar.store') }}">
                                         @csrf
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <input type="number" name="price" class="form-control"
-                                                placeholder="Enter Price">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Date</label>
-                                            <input type="date" name="date" class="form-control">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+
+                                                <div class="form-group">
+                                                    <label>Price</label>
+                                                    <input type="number" name="price" class="form-control"
+                                                        placeholder="Enter Price">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <input type="date" name="date" class="form-control">
+                                                </div>
+
+                                            </div>
                                         </div>
 
                                         <div class="form-group my-0 py-0">
                                             <label>Item Wise Price</label>
-                                            <div class="">
-                                                <a id="cloneButton" class="btn btn-sm btn-success addBtn"><span
-                                                        class="text-light">+</span></a>
+                                        </div>
+                                        <div id="original" class="original-div">
+                                            <div class="clone-div">
+                                                <div class="row my-0 py-0">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <input type="text" name="items[]" required
+                                                                class="form-control" placeholder="Enter Item">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <input type="number" name="item_price[]" required
+                                                                class="form-control" placeholder="Enter Price">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="">
+                                                            <button type="button" id="clone-button"
+                                                                class="btn btn-sm btn-success addBtn"><span
+                                                                    class="text-light">+</span></button>
+                                                            <a id="cloneButton"
+                                                                class="btn btn-sm btn-danger removeBtn"><span
+                                                                    class="text-light">-</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    <div id="originalDiv">
-                                        <div class="row my-0 py-0">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                        <input type="text" name="items[]" required class="form-control"
-                                                            placeholder="Enter Item">
-                                                    </div>
 
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="number" name="item_price[]" required
-                                                            class="form-control" placeholder="Enter Price">
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div id="clonedDivContainer"></div>
+                                        <div id="cloned-container"></div>
                                         <input type="submit" class="btn btn-success rounded-5" value="Save">
-                                        {{-- <a href="{{ route('bazar.store')}}" type="submit" class="btn btn-sm btn-info">Save</a> --}}
                                     </form>
                                 </div>
                             </div>
@@ -83,13 +99,13 @@
                     </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-lg-12">
                         <div class="footer">
                             <p>3032 © Admin Board. - <a href="#">example.com</a></p>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </section>
         </div>
     </div>
@@ -97,16 +113,43 @@
 
 @push('js')
     <script>
-       document.addEventListener('DOMContentLoaded', function (e) {
-        e.preventDefault();
-    const originalDiv = document.getElementById('originalDiv');
-    const cloneButton = document.getElementById('cloneButton');
-    const clonedDivContainer = document.getElementById('clonedDivContainer');
+        let cloneCounter = 0;
+        let max = 20;
+        document.getElementById('clone-button').addEventListener('click', function() {
 
-    cloneButton.onclick = function () {
-        const clonedDiv = originalDiv.cloneNode(true); // Clone the original div along with its content
-        clonedDivContainer.appendChild(clonedDiv);
-    };
-});
+            let originDiv = document.querySelector('.original-div');
+            console.log(originDiv);
+            if (cloneCounter < 2)
+            {
+                originDiv.append(`<div class="clone-div">
+                                    <div class="row my-0 py-0">
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="text" name="items[]" required
+                                                    class="form-control" placeholder="Enter Item">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <input type="number" name="item_price[]" required
+                                                    class="form-control" placeholder="Enter Price">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="">
+                                                <button type="button" id="clone-button"
+                                                    class="btn btn-sm btn-success addBtn"><span
+                                                        class="text-light">+</span></button>
+                                                <a id="cloneButton"
+                                                    class="btn btn-sm btn-danger removeBtn"><span
+                                                        class="text-light">-</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`);
+            }
+            cloneCounter++;
+        });
     </script>
 @endpush
