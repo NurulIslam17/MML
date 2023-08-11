@@ -60,10 +60,10 @@
                                         <div class="form-group my-0 py-0">
                                             <label>Item Wise Price</label>
                                         </div>
-                                        <div id="original" class="original-div">
+                                        <div class="original-div">
                                             <div class="clone-div">
                                                 <div class="row my-0 py-0">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <input type="text" name="items[]" required
                                                                 class="form-control" placeholder="Enter Item">
@@ -76,14 +76,11 @@
                                                                 class="form-control" placeholder="Enter Price">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-1">
                                                         <div class="">
                                                             <button type="button" id="clone-button"
                                                                 class="btn btn-sm btn-success addBtn"><span
                                                                     class="text-light">+</span></button>
-                                                            <a id="cloneButton"
-                                                                class="btn btn-sm btn-danger removeBtn"><span
-                                                                    class="text-light">-</span></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -98,14 +95,6 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer">
-                            <p>3032 © Admin Board. - <a href="#">example.com</a></p>
-                        </div>
-                    </div>
-                </div> --}}
             </section>
         </div>
     </div>
@@ -118,12 +107,11 @@
         document.getElementById('clone-button').addEventListener('click', function() {
 
             let originDiv = document.querySelector('.original-div');
-            console.log(originDiv);
-            if (cloneCounter < 2)
+            if (cloneCounter < 10)
             {
-                originDiv.append(`<div class="clone-div">
+                $('.original-div').append(`<div class="clone-div`+cloneCounter+`">
                                     <div class="row my-0 py-0">
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text" name="items[]" required
                                                     class="form-control" placeholder="Enter Item">
@@ -136,13 +124,9 @@
                                                     class="form-control" placeholder="Enter Price">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-1">
                                             <div class="">
-                                                <button type="button" id="clone-button"
-                                                    class="btn btn-sm btn-success addBtn"><span
-                                                        class="text-light">+</span></button>
-                                                <a id="cloneButton"
-                                                    class="btn btn-sm btn-danger removeBtn"><span
+                                                <a  class="btn btn-sm btn-danger remove-btn" id = "`+cloneCounter+`"><span
                                                         class="text-light">-</span></a>
                                             </div>
                                         </div>
@@ -150,6 +134,13 @@
                                 </div>`);
             }
             cloneCounter++;
+        });
+
+        $(document).on('click', '.remove-btn', function(e) {
+            e.preventDefault();
+            var removeButtonId = $(this).attr('id');
+            $('.clone-div' + removeButtonId + '').remove();
+            cloneCounter--;
         });
     </script>
 @endpush

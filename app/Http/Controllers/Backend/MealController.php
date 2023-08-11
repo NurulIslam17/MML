@@ -33,7 +33,7 @@ class MealController extends Controller
                 'meal_on' => $request->meal_on,
             ]);
             Toastr::success('Data Inserted Successfully');
-            return redirect()->route('meal.index');
+            return back();
         } catch (Throwable $th) {
             Log::error($th->getMessage());
             Toastr::error('Data Inserted Failed');

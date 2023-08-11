@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                 'name' => 'Admin',
                 'email' => 'admin@app.com',
                 'type' => 1,
-                'password'=>Hash::make('12345678')
+                'password'=>Hash::make('password')
             ]
         );
 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 'name' => 'User',
                 'email' => 'user@app.com',
                 'type' => 0,
-                'password'=>Hash::make('12345678')
+                'password'=>Hash::make('password')
             ]
         );
     }
