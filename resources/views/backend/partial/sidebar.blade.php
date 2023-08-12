@@ -54,7 +54,7 @@
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="{{ route('logo.index') }}">Logo</a></li>
-                        <li><a href="#">Banner</a></li>
+                        <li><a href="{{ route('banner.index') }}">Banner</a></li>
                     </ul>
                 </li>
 
