@@ -9,4 +9,5 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/logo',[LogoController::class,'index'])->name('logo.index');
+    Route::post('/logo/update/{id}',[LogoController::class,'update'])->name('logo.update');
 });
