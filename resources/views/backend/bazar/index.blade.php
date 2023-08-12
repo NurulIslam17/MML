@@ -71,7 +71,11 @@
                                                         @if (auth()->user()->type == 1)
                                                             <a href="{{ route('bazar.approve', $bazar->id) }}">
                                                                 <button type="button"
-                                                                    class="btn btn-{{  $bazar->status == 1 ? "default" : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
+                                                                    class="btn btn-{{  $bazar->status == 1 ? 'default' : 'success' }} btn-flat py-0">{{  $bazar->status == 1 ? " Cancle" : 'Approve' }}</button>
+                                                            </a>
+                                                            <a href="{{ route('bazar.approve', $bazar->id) }}">
+                                                                <button type="button"
+                                                                    class="btn btn-secondary btn-flat py-0">Edit</button>
                                                             </a>
                                                         @endif
                                                         <a href="{{ route('bazar.details', $bazar->id) }}">
