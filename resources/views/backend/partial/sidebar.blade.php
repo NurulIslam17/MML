@@ -38,7 +38,15 @@
                     </ul>
                 </li>
 
-                <li><a href="app-profile.html"><i class="ti-user"></i> Member</a></li>
+                <li><a class="sidebar-sub-toggle"><i class="ti-settings"></i> CMS <span
+                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="{{ route('logo.index') }}">Logo</a></li>
+                        <li><a href="#">Banner</a></li>
+                    </ul>
+                </li>
+
+                {{-- <li><a href="app-profile.html"><i class="ti-user"></i> Member</a></li> --}}
             </ul>
         </div>
     </div>
