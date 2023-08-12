@@ -3,13 +3,25 @@
         <div class="nano-content">
             <ul>
                 <div class="logo"><a href="{{ route('dashboard') }}"><span>
-                    
-                <img src="{{ asset('dashboard_assets') }}/images/mms-logo3.PNG" alt="" class="rounded-circle" style="height:60px" srcset=""></span></a></div>
+
+                    @php
+                        $logo = \App\Models\Logo::first();
+                        // dd($logo);
+                    @endphp
+                            @if ($logo->image)
+                                <img src="{{ asset('upload/images/' . $logo->image) }}" class="rounded-circle"
+                                style="height:60px;width:60px;" alt="" srcset="">
+                            @else
+                               
+                            <img src="{{ asset('dashboard_assets') }}/images/mms-logo3.PNG" alt=""
+                                class="rounded-circle" style="height:60px;width:60px;" srcset="">
+                            @endif
+                        </span></a></div>
 
                 <li class="sidebar-sub-toggle">
                     <a href="{{ route('dashboard') }}">
                         <i class="ti-home"></i>
-                    Home</a>
+                        Home</a>
                 </li>
 
                 <li><a class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> Cost <span

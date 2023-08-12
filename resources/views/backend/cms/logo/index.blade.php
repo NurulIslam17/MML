@@ -17,10 +17,10 @@
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb">
-                                    <a href="#">
+                                    {{-- <a href="#">
                                         <button type="button" class="btn btn-success btn-flat btn-addon m-b-10 m-l-5"><i
-                                                class="ti-plus"></i>Create</button>
-                                    </a>
+                                                class="ti-plus"></i></button>
+                                    </a> --}}
                                 </ol>
                             </div>
                         </div>
@@ -31,52 +31,32 @@
             <!-- /# row -->
             <section id="main-content">
                 <div class="row">
-                    <div class="col-lg-10 mx-auto">
+                    <div class="col-lg-6 mx-auto">
                         <div class="card">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
-                                        <thead>
-                                            <tr class="text-center">
-                                                <th>SL</th>
-                                                <th>Deposite By</th>
-                                                <th>Amount(BDT)</th>
-                                                <th>Date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{-- @foreach ($deposites as $key => $item)
-                                                <tr>
-                                                    <td>#{{ $key + 1 }}</td>
-                                                    <td>
-                                                        {{ $item->user->name }}
-                                                    </td>
-                                                    <td>
-                                                        {{ $item->amount }}
-                                                    </td>
-                                                    <td>
-                                                        {{ \Carbon\Carbon::parse($item->deposite_on)->format('d M , Y') }}
-                                                    </td>
-                                                    <td>
 
-                                                        @if (auth()->user()->type == 1)
-                                                            <a href="#">
-                                                                <button type="button"
-                                                                    class="btn btn-success btn-flat py-0">Edit</button>
-                                                            </a>
-                                                        @endif
-
-                                                        <a href="#">
-                                                            <button type="button"
-                                                                class="btn btn-info btn-flat py-0">Details</button>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach --}}
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <form action="{{ route('logo.update',$logo->id) }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            @if ($logo->image)
+                                                <img src="{{ asset('upload/images/' . $logo->image) }}"
+                                                    class="rounded-circle" style="height: 90px;width:90px" alt=""
+                                                    srcset="">
+                                            @else
+                                                <img src="{{ asset('dashboard_assets/images/mms-logo3.PNG') }}"
+                                                    class="rounded-circle" style="height: 90px;width:90px" alt=""
+                                                    srcset="">
+                                            @endif
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="file" name="image" class="form-control" id="">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="submit" class="btn btn-success rounded-0">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
