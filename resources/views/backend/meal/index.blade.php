@@ -63,16 +63,11 @@
                                                     <td>
 
                                                         @if (auth()->user()->type == 1)
-                                                            <a href="#">
+                                                            <a href="{{ route('meal.edit',$meal->id) }}">
                                                                 <button type="button"
                                                                     class="btn btn-success btn-flat py-0">Edit</button>
                                                             </a>
                                                         @endif
-
-                                                        <a href="#">
-                                                            <button type="button"
-                                                                class="btn btn-info btn-flat py-0">Details</button>
-                                                        </a>
                                                     </td>
                                                 </tr>
                                             @endforeach
