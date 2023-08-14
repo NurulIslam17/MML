@@ -40,7 +40,7 @@
                                                 <th>Meal No.</th>
                                                 <th>Created By</th>
                                                 <th>Date</th>
-                                                <th>Action</th>
+                                                <th class="{{ !auth()->user()->type == 1 ? 'd-none' : '' }}">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
