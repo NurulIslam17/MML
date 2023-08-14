@@ -11,4 +11,5 @@ Route::middleware([
     Route::get('/meals', [MealController::class, 'index'])->name('meal.index');
     Route::get('/meal-create', [MealController::class, 'create'])->name('meal.create');
     Route::post('/meal-store', [MealController::class, 'store'])->name('meal.store');
+    Route::get('/meal-edit/{id}', [MealController::class, 'edit'])->name('meal.edit');
 });

@@ -15,7 +15,6 @@ class MealController extends Controller
     public function index()
     {
         $meals = Meal::orderBy('id','DESC')->with(['user','mealCreatedBy'])->get();
-        // return $meals;
         return view('backend.meal.index',compact('meals'));
     }
     public function create()
@@ -39,5 +38,10 @@ class MealController extends Controller
             Toastr::error('Data Inserted Failed');
             return back();
         }
+    }
+
+    public function edit($id){
+        $meal = Meal::with('user')->findOrFail($id);
+        return view('backend.meal.edit',compact('meal'));
     }
 }
