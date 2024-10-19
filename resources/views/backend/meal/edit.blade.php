@@ -35,7 +35,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form method="POST" action="#}">
+                                    <form method="POST" action="{{ route('meal.update',$meal->id) }}">
                                         @csrf
 
                                         <div class="row">
