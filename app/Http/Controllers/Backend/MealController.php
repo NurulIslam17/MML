@@ -8,14 +8,23 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use Brian2694\Toastr\Facades\Toastr;
+use Brian2694\Toastr\Toastr;
 
 class MealController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $meals = Meal::orderBy('id','DESC')->with(['user','mealCreatedBy'])->get();
-        return view('backend.meal.index',compact('meals'));
+        $users = User::all();
+        $meals = Meal::when(isset($request->for), function ($q) use ($request) {
+            $q->where('user_id', $request->for);
+        })
+            ->when(isset($request->date), function ($q) use ($request) {
+                $q->where('meal_on', $request->date);
+            })
+            ->orderBy('id', 'DESC')
+            ->with(['user', 'mealCreatedBy'])
+            ->get();
+        return view('backend.meal.index', compact('meals', 'users'));
     }
     public function create()
     {
