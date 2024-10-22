@@ -31,15 +31,16 @@
                     <div class="col-lg-10 mx-auto">
                         <div class="card">
                             <div class="card-body">
+                                {{-- <span>Date : {{ now()->format('d/m/Y') }}</span> --}}
                                 <div class="table-responsive">
-                                    <table class="table m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
+                                    <table class="table table-striped m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>SL</th>
                                                 <th>User</th>
                                                 <th>Price (BDT)</th>
-                                                <th>Status</th>
                                                 <th>Date</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -54,6 +55,9 @@
                                                         {{ $bazar->price }}
                                                     </td>
                                                     <td>
+                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
+                                                    </td>
+                                                    <td>
                                                         @if ($bazar->status == 0)
                                                             <span class="badge badge-sm  badge-warning"><i
                                                                 class="ti-close"></i></span>
@@ -61,10 +65,6 @@
                                                             <span class="badge badge-sm badge-success"><i
                                                                 class="ti-check"></i></span>
                                                         @endif
-                                                    </td>
-                                                    <td>
-
-                                                        {{ \Carbon\Carbon::parse($bazar->bazar_date)->format('d M , Y') }}
                                                     </td>
                                                     <td>
 

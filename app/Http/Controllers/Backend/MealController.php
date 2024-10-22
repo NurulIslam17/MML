@@ -40,11 +40,11 @@ class MealController extends Controller
                 'created_by' => auth()->user()->id,
                 'meal_on' => $request->meal_on,
             ]);
-            Toastr::success('Data Inserted Successfully');
+            // Toastr::success('Data Inserted Successfully');
             return back();
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Failed');
+            // Toastr::error('Data Inserted Failed');
             return back();
         }
     }

@@ -16,7 +16,7 @@ class  BazarController extends Controller
 {
     public function index()
     {
-        $bazars = Bazar::with(['user'])->get();
+        $bazars = Bazar::with(['user'])->orderBy('bazar_date', 'DESC')->get();
         return view('backend.bazar.index', compact('bazars'));
     }
     public function create()
@@ -35,7 +35,7 @@ class  BazarController extends Controller
 
         try {
             if ($sum  != $request->price) {
-                Toastr::error('Check Items Price Sum', 'Inserted Faied');
+                // Toastr::error('Check Items Price Sum', 'Inserted Faied');
                 return back();
             }
             DB::beginTransaction();
@@ -51,12 +51,12 @@ class  BazarController extends Controller
                     "item_price" => $item_price[$key],
                 ]);
             }
-            Toastr::success('Data Inserted Successfully');
+            // Toastr::success('Data Inserted Successfully');
             DB::commit();
             return redirect()->route('bazar.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Failed');
+            // Toastr::error('Data Inserted Failed');
             DB::rollback();
         }
     }

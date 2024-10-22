@@ -15,7 +15,7 @@ class DepositeController extends Controller
     public function index()
     {
         if (auth()->user()->type == 1) {
-            $deposites = Deposite::with(['user'])->get();
+            $deposites = Deposite::with(['user'])->orderBY('deposite_on','DESC')->get();
         }else{
             $deposites = Deposite::with(['user'])->where('user_id',auth()->user()->id)->get();
         }
