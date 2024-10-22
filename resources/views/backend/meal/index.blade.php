@@ -74,14 +74,14 @@
 
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
+                                    <table class="table table-striped m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>SL</th>
                                                 <th>Meal for</th>
                                                 <th>Meal No.</th>
-                                                <th>Created By</th>
                                                 <th>Date</th>
+                                                <th>Created By</th>
                                                 <th class="{{ !auth()->user()->type == 1 ? 'd-none' : '' }}">Action</th>
                                             </tr>
                                         </thead>
@@ -96,11 +96,10 @@
                                                         {{ $meal->meal_no }}
                                                     </td>
                                                     <td>
-                                                        {{ $meal->mealCreatedBy->name }}
-                                                    </td>
-
-                                                    <td>
                                                         {{ \Carbon\Carbon::parse($meal->meal_on)->format('d M , Y') }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $meal->mealCreatedBy->name }}
                                                     </td>
                                                     <td>
 
