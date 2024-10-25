@@ -12,14 +12,17 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class DepositeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $users = User::all();
         if (auth()->user()->type == 1) {
-            $deposites = Deposite::with(['user'])->orderBY('deposite_on','DESC')->get();
+            $deposites = Deposite::when(isset($request->for),function($q) use ($request){
+                $q->where('user_id',$request->for);
+            })->with(['user'])->orderBY('deposite_on','DESC')->get();
         }else{
             $deposites = Deposite::with(['user'])->where('user_id',auth()->user()->id)->get();
         }
-        return view('backend.deposite.index', compact('deposites'));
+        return view('backend.deposite.index', compact('deposites','users'));
     }
     public function create()
     {
@@ -34,11 +37,11 @@ class DepositeController extends Controller
                 'amount' => $request->amount,
                 'deposite_on' => $request->deposite_on,
             ]);
-            Toastr::success('Data Inserted Successfully');
+            // Toastr::success('Data Inserted Successfully');
             return redirect()->route('deposite.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Inserted Failed');
+            // Toastr::error('Data Inserted Failed');
             return back();
         }
     }

@@ -1,3 +1,7 @@
+@php
+    $for = request()->get('for');
+@endphp
+
 @extends('backend.layout')
 @section('main')
     <div class="main">
@@ -33,6 +37,34 @@
                 <div class="row">
                     <div class="col-lg-10 mx-auto">
                         <div class="card">
+                            <div class="p-1 bg-info">
+                                <form action="{{ route('deposite.index') }}" method="get">
+                                    <div class="row">
+                    
+                                    <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Member</label>
+                                                <select class="form-control" name="for">
+                                                    <option selected disabled>----- Select Member----</option>
+                                                    @foreach ($users as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $for == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                                        </option>
+                                                    @endforeach
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" style="margin-top:32px;">
+                                            <input type="submit" class="btn btn-success rounded-5 w-100" value="Search">
+                                        </div>
+                                        <div class="col-md-2" style="margin-top:32px;">
+                                            <a href="{{ route('meal.index')}}" class="btn btn-warning rounded-5 w-100"  rel="noopener noreferrer">Refresh</a>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table m-t-20 text-center bootstrap-data-table-panel" id="#myTable">
