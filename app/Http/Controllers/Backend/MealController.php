@@ -29,7 +29,7 @@ class MealController extends Controller
     public function create()
     {
         $users = User::latest()->get();
-        return view('backend.meal.create',compact('users'));
+        return view('backend.meal.create', compact('users'));
     }
     public function store(Request $request)
     {
@@ -49,27 +49,29 @@ class MealController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $meal = Meal::with('user')->findOrFail($id);
-        return view('backend.meal.edit',compact('meal'));
+        return view('backend.meal.edit', compact('meal'));
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         // return $request;
         try {
-            Meal::where('id',$id)->update([
+            Meal::where('id', $id)->update([
                 'meal_no' => $request->meal_no,
                 'created_by' => auth()->user()->id,
                 'meal_on' => $request->meal_on,
             ]);
-            Toastr::success('Data Updated Successfully');
+            // Toastr::success('Data Updated Successfully');
             return redirect()->route('meal.index');
         } catch (Throwable $th) {
             Log::error($th->getMessage());
-            Toastr::error('Data Updated Failed');
+            // Toastr::error('Data Updated Failed');
             return back();
         }
 
-        return view('backend.meal.edit',compact('meal'));
+        return view('backend.meal.edit', compact('meal'));
     }
 }

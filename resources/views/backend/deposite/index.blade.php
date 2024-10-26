@@ -40,8 +40,8 @@
                             <div class="p-1 bg-info">
                                 <form action="{{ route('deposite.index') }}" method="get">
                                     <div class="row">
-                    
-                                    <div class="col-md-4">
+
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Member</label>
                                                 <select class="form-control" name="for">
@@ -59,7 +59,13 @@
                                             <input type="submit" class="btn btn-success rounded-5 w-100" value="Search">
                                         </div>
                                         <div class="col-md-2" style="margin-top:32px;">
-                                            <a href="{{ route('meal.index')}}" class="btn btn-warning rounded-5 w-100"  rel="noopener noreferrer">Refresh</a>
+                                            <a href="{{ route('meal.index') }}" class="btn btn-warning rounded-5 w-100"
+                                                rel="noopener noreferrer">Refresh</a>
+                                        </div>
+                                        <div class="col-md-4" style="margin-top:32px;">
+
+                                            <span class="text-white bg-secondary p-3" style="font-size: 30px;">BDT : {{ $totalAmount }}</span>
+                                           
                                         </div>
 
                                     </div>

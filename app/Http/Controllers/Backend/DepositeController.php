@@ -15,6 +15,7 @@ class DepositeController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
+    
         if (auth()->user()->type == 1) {
             $deposites = Deposite::when(isset($request->for),function($q) use ($request){
                 $q->where('user_id',$request->for);
@@ -22,7 +23,8 @@ class DepositeController extends Controller
         }else{
             $deposites = Deposite::with(['user'])->where('user_id',auth()->user()->id)->get();
         }
-        return view('backend.deposite.index', compact('deposites','users'));
+        $totalAmount = $deposites->sum('amount');
+        return view('backend.deposite.index', compact('deposites','users','totalAmount'));
     }
     public function create()
     {
